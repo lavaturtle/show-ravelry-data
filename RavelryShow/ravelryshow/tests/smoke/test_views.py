@@ -22,3 +22,9 @@ class ViewTests(TestCase):
         request = testing.DummyRequest()
         info = views.by_recipient_view(request)
         self.assertEqual(info['user']['name'], 'lavaturtle')
+
+    def test_duration_view(self):
+        """Smoke-test "Duration" view"""
+        request = testing.DummyRequest()
+        info = views.duration_view(request)
+        self.assertEqual(info['user']['name'], 'lavaturtle')

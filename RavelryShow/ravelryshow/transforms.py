@@ -9,6 +9,7 @@ A "project group" dictionary has format
 
 """
 from collections import defaultdict
+from datetime import datetime
 import locale
 
 
@@ -39,4 +40,32 @@ def by_recipient_transform(projects):
     project_groups = [{'title': recip,
                        'projects': projects_by_recipient[recip]}
                       for recip in sorted_recipients]
+    return project_groups
+
+
+def duration_transform(projects):
+    """Group projects by how long they took (or have taken so far)
+
+    @param projects: List of dictionaries, one per project
+    @return list of project group dictionaries, sorted from short to long
+
+    """
+    time_buckets = {1: 'Less than a day',
+                    7: 'Less than a week',
+                    30: 'Less than a month',
+                    366: 'Less than a year',
+                    1000000000: 'More than a year'}
+    date_format = '%Y-%m-%d'
+    projects_by_duration = defaultdict(list)
+    for project in projects:
+        start_date = datetime.strptime(project['started'], date_format)
+        end_date = datetime.strptime(project['completed'], date_format) if project['completed'] else datetime.now()
+        delta = end_date - start_date
+        duration = delta.days
+        bucket = min(filter(lambda cap: cap > duration,
+                            time_buckets.keys()))
+        projects_by_duration[bucket].append(project)
+    project_groups = [{'title': time_buckets[cap],
+                       'projects': projects_by_duration[cap]}
+                      for cap in sorted(projects_by_duration.keys())]
     return project_groups
