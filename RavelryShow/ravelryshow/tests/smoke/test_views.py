@@ -1,7 +1,8 @@
 """Smoke tests for views"""
+from pyramid import testing
 import unittest
 
-from pyramid import testing
+from ravelryshow import views
 
 class ViewTests(unittest.TestCase):
     def setUp(self):
@@ -11,7 +12,13 @@ class ViewTests(unittest.TestCase):
         testing.tearDown()
 
     def test_basic_view(self):
-        from ravelryshow.views import all_projects_view
+        """Smoke-test basic "All Projects" view"""
         request = testing.DummyRequest()
-        info = all_projects_view(request)
+        info = views.all_projects_view(request)
+        self.assertEqual(info['user']['name'], 'lavaturtle')
+
+    def test_by_recipient_view(self):
+        """Smoke-test "By Recipient" view"""
+        request = testing.DummyRequest()
+        info = views.by_recipient_view(request)
         self.assertEqual(info['user']['name'], 'lavaturtle')
