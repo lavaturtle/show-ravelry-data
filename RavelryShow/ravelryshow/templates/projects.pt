@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="${request.static_url('ravelryshow:static/projects.css')}" type="text/css" media="screen" charset="utf-8" />
 </head>
 <body>
-    <h1 tal:content="user.name + '\'s projects'"/>
+    <h1><a tal:attributes="href 'http://www.ravelry.com/people/' + user.name" tal:content="user.name"/>'s projects</h1>
     <div id="orgButtons">
         <a href="/">All Projects</a>
         <a href="/byrecipient">By Recipient</a>
