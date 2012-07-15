@@ -10,7 +10,7 @@ class ViewTests(unittest.TestCase):
         testing.tearDown()
 
     def test_my_view(self):
-        from .views import my_view
+        from .views import projects_view
         request = testing.DummyRequest()
-        info = my_view(request)
-        self.assertEqual(info['project'], 'RavelryShow')
+        info = projects_view(request)
+        self.assertEqual(info['user']['name'], 'lavaturtle')
