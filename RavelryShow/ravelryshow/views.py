@@ -1,12 +1,14 @@
 import json
-from pyramid.response import Response
+from pyramid.view import view_config
 import urllib
 
-
-def print_projects():
+@view_config(route_name='home', renderer='templates/projects.pt')
+def projects_view(request):
     data_dict = fetch_project_data()
-    project_names = [project['name'] for project in data_dict['projects']]
-    return ', '.join(project_names)
+    user = data_dict['user']
+    projects = data_dict['projects']
+    return {'user': user,
+            'projects': projects}
 
 
 def fetch_project_data():
