@@ -1,3 +1,7 @@
+html {
+    font-family: Helvetica, Sans;
+}
+
 li.project {
     display: inline-block;
     width: 75px;
@@ -40,5 +44,4 @@ h2 {
     margin-left: 1ex;
     margin-right: 1ex;
     padding: 2px 15px;
-    font-family: Helvetica, Sans;
 }
