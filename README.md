@@ -1,10 +1,13 @@
 show-ravelry-data
 =================
 
-Pyramid app to display Ravelry project data in a fun way
+Pyramid-based web app that displays Ravelry project data organized in various ways.
 
 To run the server in "developer mode":
-* cd src
+* cd RavelryShow
 * python setup.py develop
-* cd ravelryshow
-* python runservery.py
+* pserve development.ini
+
+The app can then be viewed at http://localhost:6543/
+
+By default, the app displays data for user lavaturtle.
