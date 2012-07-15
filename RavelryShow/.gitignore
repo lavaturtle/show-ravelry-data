@@ -1,3 +1,4 @@
 *.egg
 *.pyc
 RavelryShow.egg-info
+*.swp
