@@ -16,7 +16,7 @@
         <h2 tal:content="project_group.title"/>
         <ul>
             <li tal:repeat="project project_group.projects" tal:attributes="class 'project projectNoImage' if not project.thumbnail else 'project'">
-                <img tal:condition="project.thumbnail" tal:attributes="src project.thumbnail.src;alt project.name;title project.notes"/>
+                <img tal:condition="project.thumbnail" tal:attributes="src project.thumbnail.src;alt project.name;title project.name"/>
                 <div tal:condition="not project.thumbnail" tal:content="project.name"/>
             </li>
         </ul>
