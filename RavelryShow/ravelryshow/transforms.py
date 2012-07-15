@@ -27,7 +27,7 @@ def by_recipient_transform(projects):
     """Group projects by "made for" field
 
     @param projects: List of dictionaries, one per project
-    @return list of project group dictionaries
+    @return list of project group dictionaries, sorted by recipient
 
     """
     projects_by_recipient = defaultdict(list)
