@@ -1,20 +1,32 @@
-import json
+from collections import defaultdict
+import locale
 from pyramid.view import view_config
-import urllib
+
+from fetch_data import fetch_project_data
+
 
 @view_config(route_name='home', renderer='templates/projects.pt')
-def projects_view(request):
+def all_projects_view(request):
+    """Return all projects in one group"""
     data_dict = fetch_project_data()
-    user = data_dict['user']
-    projects = data_dict['projects']
-    return {'user': user,
-            'projects': projects}
+    return {'user': data_dict['user'],
+            'project_groups': [{'title': 'All Projects',
+                               'projects': data_dict['projects']}]}
 
 
-def fetch_project_data():
-    """Fetch a dictionary of project data"""
-    url = 'http://api.ravelry.com/projects/lavaturtle/progress.json?key=41ea1a592266728c48ca047437822999e86834dc&status=in-progress+hibernating+finished+frogged&notes=true'
-    reader = urllib.urlopen(url)
-    data_json = reader.read()
-    data_dict = json.loads(data_json)
-    return data_dict
+@view_config(route_name='by_for', renderer='templates/projects.pt')
+def by_recipient_view(request):
+    """Group projects by the "made for" field"""
+    data_dict = fetch_project_data()
+    all_projects = data_dict['projects']
+    projects_by_recipient = defaultdict(list)
+    for project in all_projects:
+        recipient = project['madeFor']
+        projects_by_recipient[recipient].append(project)
+    sorted_recipients = sorted(projects_by_recipient.keys(),
+                               cmp=lambda x,y: locale.strcoll(x.lower(), y.lower()))
+    project_groups = [{'title': recip,
+                       'projects': projects_by_recipient[recip]}
+                      for recip in sorted_recipients]
+    return {'user': data_dict['user'],
+            'project_groups': project_groups}

@@ -8,11 +8,18 @@
 </head>
 <body>
     <h1 tal:content="user.name + '\'s projects'"/>
-    <ul>
-        <li tal:repeat="project projects" tal:attributes="class 'project projectNoImage' if not project.thumbnail else 'project'">
-            <img tal:condition="project.thumbnail" tal:attributes="src project.thumbnail.src;alt project.name;title project.notes"/>
-            <div tal:condition="not project.thumbnail" tal:content="project.name"/>
-        </li>
-    </ul>
+    <div id="orgButtons">
+        <a href="/">All Projects</a>
+        <a href="/byrecipient">By Recipient</a>
+    </div>
+    <div tal:repeat="project_group project_groups">
+        <h2 tal:content="project_group.title"/>
+        <ul>
+            <li tal:repeat="project project_group.projects" tal:attributes="class 'project projectNoImage' if not project.thumbnail else 'project'">
+                <img tal:condition="project.thumbnail" tal:attributes="src project.thumbnail.src;alt project.name;title project.notes"/>
+                <div tal:condition="not project.thumbnail" tal:content="project.name"/>
+            </li>
+        </ul>
+    </div>
 </body>
 </html>

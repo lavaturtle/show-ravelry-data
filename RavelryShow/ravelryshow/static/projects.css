@@ -23,3 +23,22 @@ li.projectNoImage div {
 h1 {
     text-align: center;
 }
+
+h2 {
+    text-align: left;
+    margin-left: 2em;
+}
+
+#orgButtons {
+    text-align: center;
+}
+
+#orgButtons a {
+    background-color: green;
+    color: white;
+    text-decoration: none;
+    margin-left: 1ex;
+    margin-right: 1ex;
+    padding: 2px 15px;
+    font-family: Helvetica, Sans;
+}
