@@ -24,6 +24,11 @@ li.projectNoImage div {
     padding: 1ex;
 }
 
+li.projectNoImage a {
+    text-decoration: none;
+    color: inherit;
+}
+
 h1 {
     text-align: center;
     color: #004000;
