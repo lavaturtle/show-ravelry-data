@@ -1,10 +1,10 @@
 """Smoke tests for views"""
 from pyramid import testing
-import unittest
+from unittest import TestCase
 
 from ravelryshow import views
 
-class ViewTests(unittest.TestCase):
+class ViewTests(TestCase):
     def setUp(self):
         self.config = testing.setUp()
 
