@@ -1,3 +1,3 @@
-RavelryShow README
+This is a Pyramid app that displays Ravelry data.
 
-Please see ../README.md
+For more details, please see the top-level README.md
