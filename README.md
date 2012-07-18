@@ -1,7 +1,7 @@
 show-ravelry-data
 =================
 
-Pyramid-based web app that displays Ravelry project data organized in various ways.
+Pyramid-based web app that displays Ravelry project data organized in various ways.  The projects can be organized by how long they took, or by who they were made for.
 
 By default, the app displays data for user lavaturtle.
 
