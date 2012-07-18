@@ -1,4 +1,4 @@
-"""Smoke tests for views"""
+"""Smoke tests for view callables"""
 from pyramid import testing
 from unittest import TestCase
 
@@ -6,6 +6,7 @@ from ravelryshow import views
 
 
 class ViewTests(TestCase):
+    """Smoketests for view callables"""
     def setUp(self):
         self.config = testing.setUp()
 

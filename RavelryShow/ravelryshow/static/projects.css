@@ -1,7 +1,9 @@
+/* General fonts */
 html {
     font-family: Helvetica, Sans;
 }
 
+/* Project organization */
 li.project {
     display: inline-block;
     width: 75px;
@@ -29,6 +31,7 @@ li.projectNoImage a {
     color: inherit;
 }
 
+/* headers */
 h1 {
     text-align: center;
     color: #004000;
@@ -44,6 +47,7 @@ h2 {
     margin-left: 2em;
 }
 
+/* Navigation links */
 #orgButtons {
     text-align: center;
 }

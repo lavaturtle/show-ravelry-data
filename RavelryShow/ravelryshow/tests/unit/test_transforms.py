@@ -5,6 +5,7 @@ from ravelryshow import transforms
 
 
 class TransformTests(TestCase):
+    """Tests for functions that organize projects into groups"""
     def setUp(self):
         self._all_projects = [{'name': 'A Project',
                                'madeFor': 'Suzy',
