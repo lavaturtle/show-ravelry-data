@@ -4,6 +4,7 @@ from unittest import TestCase
 
 from ravelryshow import views
 
+
 class ViewTests(TestCase):
     def setUp(self):
         self.config = testing.setUp()

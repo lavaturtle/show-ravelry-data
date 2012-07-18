@@ -3,6 +3,7 @@ from unittest import TestCase
 
 from ravelryshow import transforms
 
+
 class TransformTests(TestCase):
     def setUp(self):
         self._all_projects = [{'name': 'A Project',
@@ -33,7 +34,8 @@ class TransformTests(TestCase):
         """By Recipient transform groups projects and sorts correctly"""
         groups = transforms.by_recipient_transform(self._all_projects)
         self.assertEquals(3, len(groups))
-        self.assertEquals(['Guy Forget', 'Suzy', 'The Lorax'], [pg['title'] for pg in groups])
+        self.assertEquals(['Guy Forget', 'Suzy', 'The Lorax'],
+                          [pg['title'] for pg in groups])
         self.assertEquals(2, len(groups[2]))
 
     def test_by_duration(self):

@@ -36,7 +36,7 @@ def by_recipient_transform(projects):
         recipient = project['madeFor']
         projects_by_recipient[recipient].append(project)
     sorted_recipients = sorted(projects_by_recipient.keys(),
-                               cmp=lambda x,y: locale.strcoll(x.lower(), y.lower()))
+                               cmp=lambda x, y: locale.strcoll(x.lower(), y.lower()))
     project_groups = [{'title': recip,
                        'projects': projects_by_recipient[recip]}
                       for recip in sorted_recipients]
@@ -55,11 +55,15 @@ def duration_transform(projects):
                     30: 'Less than a month',
                     366: 'Less than a year',
                     1000000000: 'More than a year'}
-    date_format = '%Y-%m-%d'
+
+    def parse_date(date_str):
+        date_format = '%Y-%m-%d'
+        return datetime.strptime(date_str, date_format)
+
     projects_by_duration = defaultdict(list)
     for project in projects:
-        start_date = datetime.strptime(project['started'], date_format)
-        end_date = datetime.strptime(project['completed'], date_format) if project['completed'] else datetime.now()
+        start_date = parse_date(project['started'])
+        end_date = parse_date(project['completed']) if project['completed'] else datetime.now()
         delta = end_date - start_date
         duration = delta.days
         bucket = min(filter(lambda cap: cap > duration,

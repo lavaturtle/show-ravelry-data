@@ -21,6 +21,7 @@ def by_recipient_view(request):
     return {'user': data_dict['user'],
             'project_groups': project_groups}
 
+
 @view_config(route_name='duration', renderer='templates/projects.pt')
 def duration_view(request):
     """Group projects by how long they took (or have taken so far)"""
