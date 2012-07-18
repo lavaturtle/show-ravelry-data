@@ -23,5 +23,5 @@ Here are two sets of instructions: one for using a virtual environment, and an a
 * sudo python setup.py develop
 * pserve production.ini
 
-## Local URL
+## Viewing the page
 Once the server is running locally, the app can be viewed at http://localhost:6543/
